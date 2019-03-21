@@ -12,7 +12,7 @@ class Header extends Component {
 class Shownote extends Component {
   render() {
     const shownote = this.props.shownote
-    return <li><a href={shownote.url} target='_blank'>{shownote.title}</a></li>
+    return <li><a href={shownote.url} target='_blank' rel='noopener noreferrer'>{shownote.title}</a></li>
   }
 }
 
@@ -20,10 +20,10 @@ class Episode extends Component {
   render() {
     const episode = this.props.episode;
     return (<p>
-      <span class="epititle"><a href={episode.mediaUrl} target='_blank'>{episode.title}</a></span> <span class="pubdate">(<Moment format='YYYY/MM/DD'>{episode.publicationDate}</Moment>)</span>
-      <ul>
+      <span class="epititle"><a href={episode.mediaUrl} target='_blank' rel='noopener noreferrer'>{episode.title}</a></span> <span class="pubdate">(<Moment format='YYYY/MM/DD'>{episode.publicationDate}</Moment>)</span>
+      <div>
         {episode.shownotes.map(shownote => <Shownote shownote={shownote} />)}
-      </ul>
+      </div>
     </p>)
   }
 }

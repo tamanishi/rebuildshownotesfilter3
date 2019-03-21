@@ -1,6 +1,7 @@
 {
-  "main.css": "static/css/main.0dc96ed7.css",
-  "main.css.map": "static/css/main.0dc96ed7.css.map",
-  "main.js": "js/main.js",
-  "main.js.map": "js/main.js.map"
+  "main.css": "./static/css/main.e21d9457.css",
+  "main.js": "./js/main.js",
+  "main.css.map": "./static/css/main.e21d9457.css.map",
+  "main.js.map": "./js/main.js.map",
+  "index.html": "./index.html"
 }
