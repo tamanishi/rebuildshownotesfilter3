@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { Container, Row, Col } from 'reactstrap';
+import Axios from 'axios';
+import { Container, Row, Col, Form, Input } from 'reactstrap';
+import Moment from 'react-moment';
 
 class Header extends Component {
   render() {
@@ -19,7 +20,7 @@ class Episode extends Component {
   render() {
     const episode = this.props.episode;
     return (<p>
-      <a href={episode.mediaUrl} target='_blank'>{episode.title}</a>
+      <span class="epititle"><a href={episode.mediaUrl} target='_blank'>{episode.title}</a></span> <span class="pubdate">(<Moment format='YYYY/MM/DD'>{episode.publicationDate}</Moment>)</span>
       <ul>
         {episode.shownotes.map(shownote => <Shownote shownote={shownote} />)}
       </ul>
@@ -42,7 +43,7 @@ class App extends Component {
     }
   }
   componentDidMount() {
-    axios.get('./json/episodes.json')
+    Axios.get('./json/episodes.json')
     .then((res) => {
       this.setState({episodes: res.data.episodes})
       this.setState({fullEpisodes: res.data.episodes})
@@ -66,7 +67,7 @@ class App extends Component {
      <div className="App">
         <Container>
           <Header />
-          <Row><Col><input type='text' placeholder='keyword' onChange={this.filterShownotes} /></Col></Row>
+          <Row><Col xs="3"><Form><Input type='text' placeholder='query' onChange={this.filterShownotes} /></Form></Col></Row>
           <Episodes episodes={this.state.episodes} />
         </Container>
       </div>
