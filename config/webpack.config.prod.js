@@ -222,9 +222,9 @@ module.exports = {
                 loader: 'css-loader', 
                 options: {
                   modules: true,
-                  camelCase: true, 
+                  // camelCase: true, 
                   // minimize: true, 
-                  localIdentName: '[local]-[hash:base64:5]',
+                  // localIdentName: '[local]-[hash:base64:5]',
                   importLoaders: 1
                 }
               }
