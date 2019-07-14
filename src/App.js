@@ -22,7 +22,7 @@ class Episode extends Component {
     return (<p>
       <span className="epititle"><a href={episode.mediaUrl} target='_blank' rel='noopener noreferrer'>{episode.title}</a></span> <span className="pubdate">(<Moment format='YYYY/MM/DD'>{episode.publicationDate}</Moment>)</span>
       <span>
-        {episode.shownotes.map(shownote => <Shownote shownote={shownote} />)}
+        {episode.shownotes.map((shownote, i) => <Shownote shownote={shownote} key={i} />)}
       </span>
     </p>)
   }
@@ -30,7 +30,7 @@ class Episode extends Component {
 
 class Episodes extends Component {
   render() {
-    return <div>{this.props.episodes.map(episode => <Episode episode={episode} />)}</div>
+    return <div>{this.props.episodes.map((episode, i) => <Episode episode={episode} key={i} />)}</div>
   }
 }
 
@@ -44,6 +44,7 @@ class App extends Component {
   }
   componentDidMount() {
     Axios.get('./shownotes-json')
+    // Axios.get('./json/episodes.json')
     .then((res) => {
       this.setState({episodes: res.data.episodes})
       this.setState({fullEpisodes: res.data.episodes})
