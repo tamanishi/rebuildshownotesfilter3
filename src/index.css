@@ -4,12 +4,12 @@ body {
   font-family: sans-serif;
 }
 
-.epititle {
+:global(.epititle) {
   font-weight: bolder;
   font-size: larger;
 }
 
-.pubdate {
+:global(.pubdate) {
   font-weight: lighter;
   font-size: small;
 }
