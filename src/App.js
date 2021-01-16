@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import { Container, Row, Col, Form, Input } from 'reactstrap';
 import Moment from 'react-moment';
+import { unescape } from 'html-escaper';
 
 class Header extends Component {
   render() {
@@ -12,7 +13,7 @@ class Header extends Component {
 class Shownote extends Component {
   render() {
     const shownote = this.props.shownote
-    return <li><a href={shownote.url} target='_blank' rel='noopener noreferrer'>{shownote.title}</a></li>
+    return <li><a href={shownote.url} target='_blank' rel='noopener noreferrer'>{unescape(shownote.title)}</a></li>
   }
 }
 
@@ -20,7 +21,7 @@ class Episode extends Component {
   render() {
     const episode = this.props.episode;
     return (<p>
-      <span className="epititle"><a href={episode.mediaUrl} target='_blank' rel='noopener noreferrer'>{episode.title}</a></span> <span className="pubdate">(<Moment format='YYYY/MM/DD'>{episode.publicationDate}</Moment>)</span>
+      <span className="epititle"><a href={episode.mediaUrl} target='_blank' rel='noopener noreferrer'>{unescape(episode.title)}</a></span> <span className="pubdate">(<Moment format='YYYY/MM/DD'>{episode.publicationDate}</Moment>)</span>
       <span>
         {episode.shownotes.map((shownote, i) => <Shownote shownote={shownote} key={i} />)}
       </span>
