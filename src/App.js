@@ -50,6 +50,7 @@ class App extends Component {
       this.setState({episodes: res.data.episodes})
       this.setState({fullEpisodes: res.data.episodes})
     })
+    document.title = 'Rebuild Shownotes Filter'
   }
   filterShownotes = (e) => {
     this.refs.EpisodesComp.filterShownotes(e)
