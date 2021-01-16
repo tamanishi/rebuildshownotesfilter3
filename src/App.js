@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import { Container, Row, Col, Form, Input } from 'reactstrap';
 import Moment from 'react-moment';
-import { unescape } from 'html-escaper';
+import { escape, unescape } from 'html-escaper';
 
 class Header extends Component {
   render() {
@@ -59,7 +59,7 @@ class App extends Component {
     .map(episode => ({
       ...episode,
       shownotes: episode.shownotes
-        .filter(shownote => shownote.title.toLowerCase().includes(e.target.value.toLowerCase()))
+        .filter(shownote => shownote.title.toLowerCase().includes(escape(e.target.value.toLowerCase())))
     }))
     .filter(episode => episode.shownotes.length > 0)
     this.setState({episodes: filtered})
