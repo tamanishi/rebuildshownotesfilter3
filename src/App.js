@@ -13,7 +13,7 @@ class Header extends Component {
 class Shownote extends Component {
   render() {
     const shownote = this.props.shownote
-    return <li><a href={shownote.url} target='_blank' rel='noopener noreferrer'>{unescape(shownote.title)}</a></li>
+    return <li><a href={shownote.url} target='_blank' rel='noopener noreferrer'>{unescape(shownote.title).replaceAll('&nbsp;', ' ')}</a></li>
   }
 }
 
@@ -21,7 +21,7 @@ class Episode extends Component {
   render() {
     const episode = this.props.episode;
     return (<p>
-      <span className="epititle"><a href={episode.mediaUrl} target='_blank' rel='noopener noreferrer'>{unescape(episode.title)}</a></span> <span className="pubdate">(<Moment format='YYYY/MM/DD'>{episode.publicationDate}</Moment>)</span>
+      <span className="epititle"><a href={episode.mediaUrl} target='_blank' rel='noopener noreferrer'>{unescape(episode.title).replaceAll('&nbsp;', ' ')}</a></span> <span className="pubdate">(<Moment format='YYYY/MM/DD'>{episode.publicationDate}</Moment>)</span>
       <span>
         {episode.shownotes.map((shownote, i) => <Shownote shownote={shownote} key={i} />)}
       </span>
@@ -44,8 +44,8 @@ class App extends Component {
     }
   }
   componentDidMount() {
-    Axios.get('./shownotes-json')
-    // Axios.get('./json/episodes.json')
+    // Axios.get('./shownotes-json')
+    Axios.get('./json/episodes.json')
     .then((res) => {
       this.setState({episodes: res.data.episodes})
       this.setState({fullEpisodes: res.data.episodes})
