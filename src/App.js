@@ -44,8 +44,8 @@ class App extends Component {
     }
   }
   componentDidMount() {
-    // Axios.get('./shownotes-json')
-    Axios.get('./json/episodes.json')
+    Axios.get('./shownotes-json')
+    // Axios.get('./json/episodes.json')
     .then((res) => {
       this.setState({episodes: res.data.episodes})
       this.setState({fullEpisodes: res.data.episodes})
